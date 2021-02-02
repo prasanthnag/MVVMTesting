@@ -17,7 +17,7 @@ class NewsViewModel(private val newsRepository: NewsRepository) : ViewModel() {
         getNewsDetails()
     }
 
-    private fun getNewsDetails() {
+     fun getNewsDetails() {
         val disposable = newsRepository.getNewsDetails().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread()).subscribe({
                 val newsDetails = it.newsDetails
