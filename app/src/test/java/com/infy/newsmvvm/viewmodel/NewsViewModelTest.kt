@@ -61,7 +61,6 @@ class NewsViewModelTest {
         `when`(repository.getNewsDetails()).thenReturn(Observable.just(newsResponse))
         viewModel.getNewsDetails()
         assertEquals(newsResponse.newsDetails,viewModel.newsDetailsLiveData.value)
-        //assertTrue(true)
     }
 
     @Test
@@ -69,6 +68,5 @@ class NewsViewModelTest {
         `when`(repository.getNewsDetails()).thenReturn(Observable.error(Throwable("Api error")))
         viewModel.getNewsDetails()
         assertEquals(newsResponse.newsDetails,viewModel.newsDetailsLiveData.value)
-        //assertFalse(false)
     }
 }
