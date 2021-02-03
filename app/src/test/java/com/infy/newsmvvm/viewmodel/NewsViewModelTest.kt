@@ -7,8 +7,7 @@ import com.infy.newsmvvm.model.NewsResponse
 import com.infy.newsmvvm.repository.NewsRepository
 import io.reactivex.Observable
 import org.junit.After
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
+import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -61,13 +60,15 @@ class NewsViewModelTest {
     fun testApiIfSuccess() {
         `when`(repository.getNewsDetails()).thenReturn(Observable.just(newsResponse))
         viewModel.getNewsDetails()
-        assertTrue(true)
+        assertEquals(newsResponse.newsDetails,viewModel.newsDetailsLiveData.value)
+        //assertTrue(true)
     }
 
     @Test
     fun testApiFetchDataError() {
         `when`(repository.getNewsDetails()).thenReturn(Observable.error(Throwable("Api error")))
         viewModel.getNewsDetails()
-        assertFalse(false)
+        assertEquals(newsResponse.newsDetails,viewModel.newsDetailsLiveData.value)
+        //assertFalse(false)
     }
 }
