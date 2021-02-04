@@ -7,6 +7,6 @@ class NewsRepository {
 
     private var service = RetrofitInstance.getRetrofitInstance().create(ApiRepository::class.java)
 
-    fun getNewsDetails() = service.getNewsDetails()
+    fun getNewsDetails() = service.getNewsDetailsFromApi()
 
 }

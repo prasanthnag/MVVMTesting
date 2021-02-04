@@ -7,5 +7,5 @@ import retrofit2.http.GET
 interface ApiRepository {
 
     @GET("facts.json")
-    fun getNewsDetails(): Observable<NewsResponse>
+    fun getNewsDetailsFromApi(): Observable<NewsResponse>
 }

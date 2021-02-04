@@ -14,10 +14,10 @@ class NewsViewModel(private val newsRepository: NewsRepository) : ViewModel() {
     private val compositeDisposable = CompositeDisposable()
 
     init {
-        getNewsDetails()
+        storeNewsDetailsInLiveData()
     }
 
-     fun getNewsDetails() {
+     fun storeNewsDetailsInLiveData() {
         val disposable = newsRepository.getNewsDetails().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread()).subscribe({
                 val newsDetails = it.newsDetails

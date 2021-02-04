@@ -59,14 +59,14 @@ class NewsViewModelTest {
     @Test
     fun testApiIfSuccess() {
         `when`(repository.getNewsDetails()).thenReturn(Observable.just(newsResponse))
-        viewModel.getNewsDetails()
+        viewModel.storeNewsDetailsInLiveData()
         assertEquals(newsResponse.newsDetails,viewModel.newsDetailsLiveData.value)
     }
 
     @Test
     fun testApiFetchDataError() {
         `when`(repository.getNewsDetails()).thenReturn(Observable.error(Throwable("Api error")))
-        viewModel.getNewsDetails()
+        viewModel.storeNewsDetailsInLiveData()
         assertEquals(newsResponse.newsDetails,viewModel.newsDetailsLiveData.value)
     }
 }
